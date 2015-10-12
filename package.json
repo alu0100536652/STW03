@@ -4,7 +4,8 @@
   "description": "Conversor javascript de tipos",
   "main": "conversor.js",
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha test",
+    "chai": "curl https://raw.githubusercontent.com/chaijs/chai/master/chai.js -o test/chai.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/alu0100536652/STW03",
   "devDependencies": {
+    "blanket": "^1.1.7",
     "chai": "^3.3.0",
     "del": "^2.0.2",
     "gulp": "^3.9.0",
