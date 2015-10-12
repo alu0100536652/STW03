@@ -15,6 +15,16 @@
   function Temperatura(valor,tipo)
   {
     Medida.call(this, valor,tipo);
+    this.celsiusToFarenheit = function()
+    {
+      console.log("Dato convertido " +((this.valor * 9/5) + 32) + " Farenheit");
+      return (this.valor * 9/5) + 32;
+    }
+    this.farenheitToCelsius = function()
+    {
+      console.log("Dato convertido " + ((this.valor - 32)  * (5/9)) + " Celsius");
+      return (this.valor - 32)  * (5/9);
+    }
   }
   
   exports.Temperatura = Temperatura;
