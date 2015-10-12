@@ -1,4 +1,5 @@
-var expect = chai.expect;
+var expect = chai.expect,
+    should = chai.should();
 
 describe("Conversor Temperatura", function() {
   
@@ -36,14 +37,19 @@ describe("Conversor Temperatura", function() {
       expect(temperatura.tipo).to.equal('c');
     });
     
-    it("Celsius tiene que tener el tipo 'c'", function() {
+    it("El atributo tipo tiene que ser string", function() {
+      var temperatura = new Temperatura(0,'c');
+      expect(temperatura.tipo).to.be.a('string');
+    });
+    
+    it("Celsius tiene que tener el attributo tipo igual a 'c'", function() {
       var temperatura = new Celsius(0);
-      expect(temperatura.tipo).to.equal("c");
+      temperatura.should.have.property('tipo').equal('c');
     });
   
-    it("Farenheit tiene que tener el tipo 'f'", function() {
+    it("Farenheit tiene que tener el atributo tipo igual a 'f'", function() {
       var temperatura = new Farenheit(0);
-      expect(temperatura.tipo).to.equal("f");
+      temperatura.should.have.property('tipo').equal('f');
     });
     
   });
@@ -57,12 +63,12 @@ describe("Conversor Temperatura", function() {
     
     it("Si pasamos 0.0 Celsius debemos obtener 32 Farenheit",function(){
       var temperatura = new Celsius(0);
-      expect(temperatura.toFarenheit()).to.equal(32);
+      temperatura.toFarenheit().should.equal(new Temperatura(32,'f').valor);
     });
     
     it("Si pasamos 32 Farenheit debemos obtener 0 Celsius",function(){
       var temperatura = new Farenheit(32.0);
-      expect(temperatura.toCelsius()).to.equal(0);
+      temperatura.toCelsius().should.equal(new Temperatura(0,'c').valor);
     });
     
   });
@@ -76,18 +82,27 @@ describe("Conversor Temperatura", function() {
       sinon.assert.calledWithExactly(console.log, "La medida es: 2c");
     });
     
-    it("Debe haber un log para el metodo celsiusToFarenheit()", function() {
+    it("Debe haber un log para el metodo toFarenheit()", function() {
       var log = (new Celsius(0).toFarenheit());
       sinon.assert.notCalled(console.error);
       sinon.assert.calledOnce(console.log);
       sinon.assert.calledWithExactly(console.log, "Dato convertido 32 Farenheit");
     });
     
-    it("Debe haber un log para el metodo farenheitToCelsius()", function() {
+    it("Debe haber un log para el metodo toCelsius()", function() {
       var log = (new Farenheit(32).toCelsius());
       sinon.assert.notCalled(console.error);
       sinon.assert.calledOnce(console.log);
       sinon.assert.calledWithExactly(console.log, "Dato convertido 0 Celsius");
+    });
+    
+    it("Debe haber log en el metodo convertir()", function() {
+      var input = document.getElementById('convert').value;
+      input = "20C";
+      convertir();
+      sinon.assert.notCalled(console.error);
+      sinon.assert.calledOnce(console.log);
+      sinon.assert.calledWithExactly(console.log, "Valor: 20, Tipo: c");
     });
     
   });
