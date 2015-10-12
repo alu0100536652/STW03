@@ -23,6 +23,7 @@
 
   <!-- JS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script type="text/javascript" src="assets/js/conversor.js"></script>
   
   <!-- FAVICON
   -------------------------------------------------- -->
@@ -36,7 +37,7 @@
       <div class="one-half column app">
         <h4>Conversor</h4>
         <p>Introduzca un valor.</p>
-        <input id="toConvert" class="u-full-width" type="text">
+        <input id="toConvert" class="u-full-width" type="text" autofocus oninput="convertir();" placeholder="Introduzca un valor">
         <span id="converted"></span>
       </div>
     </div>
