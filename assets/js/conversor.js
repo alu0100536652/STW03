@@ -15,12 +15,24 @@
   function Temperatura(valor,tipo)
   {
     Medida.call(this, valor,tipo);
-    this.celsiusToFarenheit = function()
+  }
+  
+  function Celsius(valor)
+  {
+    this.tipo = 'c';
+    Temperatura.call(this, valor, this.tipo);
+    this.toFarenheit = function()
     {
       console.log("Dato convertido " +((this.valor * 9/5) + 32) + " Farenheit");
       return (this.valor * 9/5) + 32;
     }
-    this.farenheitToCelsius = function()
+  }
+  
+  function Farenheit(valor)
+  {
+    this.tipo = 'f';
+    Temperatura.call(this,valor,this.tipo)
+    this.toCelsius = function()
     {
       console.log("Dato convertido " + ((this.valor - 32)  * (5/9)) + " Celsius");
       return (this.valor - 32)  * (5/9);
@@ -28,6 +40,9 @@
   }
   
   exports.Temperatura = Temperatura;
+  exports.Celsius = Celsius;
+  exports.Farenheit = Farenheit;
+
 
   exports.convertir = function()
   {

@@ -35,7 +35,17 @@ describe("Conversor Temperatura", function() {
       expect(temperatura.valor).to.equal(2);
       expect(temperatura.tipo).to.equal('c');
     });
+    
+    it("Celsius tiene que tener el tipo 'c'", function() {
+      var temperatura = new Celsius(0);
+      expect(temperatura.tipo).to.equal("c");
+    });
   
+    it("Farenheit tiene que tener el tipo 'f'", function() {
+      var temperatura = new Farenheit(0);
+      expect(temperatura.tipo).to.equal("f");
+    });
+    
   });
   
   describe("Metodos",function() {
@@ -46,13 +56,13 @@ describe("Conversor Temperatura", function() {
     });
     
     it("Si pasamos 0.0 Celsius debemos obtener 32 Farenheit",function(){
-      var temperatura = new Temperatura(0.0,'c');
-      expect(temperatura.celsiusToFarenheit()).to.equal(32);
+      var temperatura = new Celsius(0);
+      expect(temperatura.toFarenheit()).to.equal(32);
     });
     
     it("Si pasamos 32 Farenheit debemos obtener 0 Celsius",function(){
-      var temperatura = new Temperatura(32.0,'f');
-      expect(temperatura.farenheitToCelsius()).to.equal(0);
+      var temperatura = new Farenheit(32.0);
+      expect(temperatura.toCelsius()).to.equal(0);
     });
     
   });
@@ -67,14 +77,14 @@ describe("Conversor Temperatura", function() {
     });
     
     it("Debe haber un log para el metodo celsiusToFarenheit()", function() {
-      var log = (new Temperatura(0,'c').celsiusToFarenheit());
+      var log = (new Celsius(0).toFarenheit());
       sinon.assert.notCalled(console.error);
       sinon.assert.calledOnce(console.log);
       sinon.assert.calledWithExactly(console.log, "Dato convertido 32 Farenheit");
     });
     
     it("Debe haber un log para el metodo farenheitToCelsius()", function() {
-      var log = (new Temperatura(32,'f').farenheitToCelsius());
+      var log = (new Farenheit(32).toCelsius());
       sinon.assert.notCalled(console.error);
       sinon.assert.calledOnce(console.log);
       sinon.assert.calledWithExactly(console.log, "Dato convertido 0 Celsius");
