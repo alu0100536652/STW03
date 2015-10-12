@@ -7,7 +7,8 @@
     this.tipo = tipo || " Sin tipo.";
     this.getMedida = function()
     {
-        return this.valor + this.tipo;
+      console.log("La medida es: " + this.valor + this.tipo);
+      return this.valor + this.tipo;
     }
   }
   

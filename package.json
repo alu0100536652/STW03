@@ -33,6 +33,7 @@
     "gulp-open": "^1.0.0",
     "gulp-uglify": "^1.4.1",
     "gulp-util": "^3.0.6",
-    "mocha": "^2.3.3"
+    "mocha": "^2.3.3",
+    "sinon": "^1.17.1"
   }
 }
