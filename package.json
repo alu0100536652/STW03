@@ -4,7 +4,7 @@
   "description": "Conversor javascript de tipos",
   "main": "conversor.js",
   "scripts": {
-    "test": "open test/index.html"
+    "test": "mocha test"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "gulp-notify": "^2.2.0",
     "gulp-open": "^1.0.0",
     "gulp-uglify": "^1.4.1",
-    "gulp-util": "^3.0.6"
+    "gulp-util": "^3.0.6",
+    "mocha": "^2.3.3"
   }
 }

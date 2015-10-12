@@ -16,12 +16,11 @@
     Medida.call(this, valor,tipo);
   }
   
+  exports.Temperatura = Temperatura;
+
   exports.convertir = function()
   {
-    var inputData = window.toConvert.value;
-    var regexp = /^\s*([-+]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*([cCfF])\s*$/i;
-    inputData = inputData.match(regexp);
     
   }
-
+  
 })(this);
