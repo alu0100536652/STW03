@@ -84,7 +84,12 @@ describe("Conversor Temperatura", function() {
     
     it("Metodo: toCentimetros() - 1 Metro deben ser 100 Centimetros",function(){
       var metro = new Metros(1);
-      metro.toCentimetros().should.equal(new Distancia(100,'m').valor);
+      metro.toCentimetros().should.equal(new Distancia(100,'cm').valor);
+    });
+    
+    it("Metodo: toMetros() - 100 Centimetros deben ser 1 Metro",function(){
+      var centimetro = new Centimetros(100);
+      centimetro.toMetros().should.equal(new Distancia(1,'m').valor);
     });
     
   });
@@ -119,6 +124,12 @@ describe("Conversor Temperatura", function() {
       convert.value = "2m";
       convertir();
       expect(converted.innerHTML).to.equal("200.00 Centimetros")
+    });
+    
+     it("Formulario HTML - Si la medida pasada es centimetro, debe crear una instanca de Centimetros",function() {
+      convert.value = "200cm";
+      convertir();
+      expect(converted.innerHTML).to.equal("2.00 Metros")
     })
       
   });
@@ -126,7 +137,7 @@ describe("Conversor Temperatura", function() {
   describe("Logs", function() {
     
     it("Console.log() - Debe haber un log para el metodo GetMedida()", function() {
-      var log = (new Temperatura(2,'c').getMedida());
+      new Temperatura(2,'c').getMedida();
       sinon.assert.notCalled(console.error);
       sinon.assert.calledOnce(console.log);
       sinon.assert.calledWithExactly(console.log, "La medida es: 2c");

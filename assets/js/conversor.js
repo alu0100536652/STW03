@@ -55,17 +55,29 @@
     }
   }
   
+  function Centimetros(valor)
+  {
+    this.tipo = 'm';
+    Distancia.call(this,valor,this.tipo);
+    this.toMetros = function()
+    {
+      console.log("Dato convertido " + (this.valor / 100) + " Metros");
+      return (this.valor / 100);
+    }
+  }
+  
   exports.Temperatura = Temperatura;
   exports.Celsius = Celsius;
   exports.Farenheit = Farenheit;
   exports.Distancia = Distancia;
   exports.Metros = Metros;
+  exports.Centimetros = Centimetros;
 
   exports.convertir = function()
   {
     var valor     = document.getElementById('convert').value,
         elemento  = document.getElementById('converted'),
-        regexp    = /^\s*([-+]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*([a-z,A-Z])\s*$/i,
+        regexp    = /^\s*([-+]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*([a-z,A-Z]|cm)\s*$/i,
         valor     = valor.match(regexp);
     
     if(valor)
@@ -88,6 +100,10 @@
         case 'm':
           var metros = new Metros(numero);
           elemento.innerHTML = metros.toCentimetros().toFixed(2) + " Centimetros";
+          break;
+        case 'cm':
+          var centimetros = new Centimetros(numero);
+          elemento.innerHTML = centimetros.toMetros().toFixed(2) + " Metros";
           break;
         
         default:

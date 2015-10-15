@@ -28,3 +28,9 @@ h4 {
 span {
     color: green;
 }
+
+@media (max-width: 550px) {
+    footer {
+        text-align: center;
+    }
+}
