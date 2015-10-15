@@ -12,17 +12,17 @@ var gulp       = require('gulp'),
 gulp.task('Minify', function () {
 
   gulp.src('./assets/css/*.css')
-   .pipe(minifyCSS({keepBreaks:true}))
-   .pipe(gulp.dest('./minified/css/'))
+    .pipe(minifyCSS({keepBreaks:true}))
+    .pipe(gulp.dest('./minified/assets/css/'))
    
   gulp.src('./assets/js/*.js')
-   .pipe(minifyCSS({keepBreaks:true}))
-   .pipe(gulp.dest('./minified/js/'))
+    .pipe(uglify())
+    .pipe(gulp.dest('./minified/assets/js/'))
    
   gulp.src('./index.html')
     .pipe(minifyHTML())
     .pipe(gulp.dest('./minified/'))
-    .pipe(notify({ message: 'Minify task complete' }))
+    .pipe(notify({ message: 'Tarea[Minimizado de archivos] - Completada!' }))
     
 });
 
@@ -30,8 +30,8 @@ gulp.task('Imagemin', function() {
 
   gulp.src('./assets/images/*')
     .pipe(imagemin())
-    .pipe(gulp.dest('./minified/images/'))
-    .pipe(notify({ message: "Image-Min task complete!"}));
+    .pipe(gulp.dest('./minified/assets/images/'))
+    .pipe(notify({ message: "Tarea[Minimizado de imagenes] - Completada!"}));
 
 });
 
@@ -41,7 +41,7 @@ gulp.task('Clean', function(cb) {
 
 gulp.task("Test", function(){
   gulp.src('')
-    .pipe(notify({ message: "Test task complete!"}))
+    .pipe(notify({ message: "Tarea[Test] - Completada!"}))
     .pipe(open({ uri: 'https://alu0100536652.github.io/STW03/test/'}))
 });
 
